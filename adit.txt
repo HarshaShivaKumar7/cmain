@@ -51,7 +51,7 @@ main()
 			case 3:	exit(0);
 		}	
 	}
-)
+}
 void roundrobin(int n,int tq,int st[],int bt[])
 	{
 		int time=0;
@@ -86,107 +86,107 @@ void roundrobin(int n,int tq,int st[],int bt[])
 			swt = swt + wt[i];
 			stat = stat + tat[i];
 		}
-			awt=(float)swt/n;
-			atat=(float)stat/n;
-			printf("process no burst time wait turn around time\n");
-				for (i = 0; i<ni++)
-					printf("\t\t%d\t\tsalt\L3d\n", i + 1, bt[i], wt[i], tat(1); 
-					printf("avg wait time is $f\n avgturn around time is 8\n", awt, atat);
-			}
-			int chkprocess(int s);
+		awt=(float)swt/n;
+		atat=(float)stat/n;
+		printf("process no burst time wait turn around time\n");
+		for (i = 0; i<n;i++)
+		printf("\t\t%d\t\tsalt\L3d\n", i + 1, bt[i], wt[i], tat(1); 
+		printf("avg wait time is $f\n avgturn around time is 8\n", awt, atat);
+	}
+	int chkprocess(int s);
+	{
+		int i;
+		for (i=1;i<=s;i++)
+		{
+			if (process[i].rem!=0)
+			return 1;
+		}
+		return 0;
+	}
+	int nextprocess()
+	{
+		int min,l,i;
+		min=32000;
+		for(i=1;i<=no;i++)
+		{
+			if(process[i].rem!=0&&process[i].rem<min)
 			{
-				int i;
-				for (i=1;i<=s;i++)
-				{
-					if (process[i].rem!=0)
-						return 1;
-				}
-					return 0;
+				min=process[i].rem;
+				l=i;
 			}
-			int nextprocess()
+		}
+		return l;
+	}
+
+	void srtf(int n)
+	{
+		int i,j,k,time=0;
+		float tavg=0,wavg=0;
+		for(i=1;i<=n;i++)
+		{
+			process[i].id=i;
+			printf("\n\n enter the arrival time for process %d:", i);
+			scanf("%d", &(process[i].arrival));
+			printf("enter the burst time for process %d:", i);
+			scanf("%d", &(process[i].burst));
+			process[i].rem = process[i].burst;
+		}
+
+		for(i=0;i<=n;i++)
+		{
+			for(j=i+1;j<=n;j++)
+			{
+				if (process[i].arrival > process(j).arrival)
 				{
-					int min,l,i;
-					min=32000;
-					for(i=1;i<=no;i++)
-					{
-						if(process[i].rem!=0&&process[i].rem<min)
-						{
-							min=process[i].rem;
-							l=i;
-						}
-					}
-						return l;
+					temp = process[i];
+					process[i] = process[j];
+					process[j] = temp;
 				}
-
-					void srtf(int n)
-					{
-						int i,j,k,time=0;
-						float tavg=0,wavg=0;
-						for(i=1;i<=n;i++)
-						{
-							process[i].id=i;
-							printf("\n\n enter the arrival time for process %d:", i);
-							scanf("%d", &(process[i].arrival));
-							printf("enter the burst time for process %d:", i);
-							scanf("%d", &(process[i].burst));
-							process[i].rem = process[i].burst;
-						}
-
-					for(i=0;i<=n;i++)
-					{
-						for(j=i+1;j<=n;j++)
-						{
-							if (process[i].arrival > process(j).arrival)
-							{
-								temp = process[i];
-								process[i] = process[j];
-								process[j] = temp;
-							}
-						}
-					}
-					no=0;
-					j=1;
-					while(chkprocess(n)==1)
-					{
-						if (process(no+1].arrival==time)
-						{
-							no++;
-							if(process[j].rem==0)
-								process[i].finish=time;
-								j=nextprocess();
-						}
-						if(process[j].rem!=0)
-						{
-							process[j].rem--;
-							for(i=1;i<=no;i++)
-							{
-								if(i!=j&& process[i].rem!=0)
-								process[i].wait++;
-							}
-						}
-						else
-						{
-							process[i].finish=time;
-							j=nextprocess();
-							time--;
-							k=j;
-						}
-							time++;
-					}
-					process[k].finish=time;
-					printf("\n\n\t\t---SHORTEST REMAINING TIME FIRST--");
-					printf("\n\n process arrival burst waiting finishing turnaround tr/tb\n");
-					printf("%5s%9s%7s%10s%8s%9s\n\n", "id", "time", "time", "time", "time", "time");
-					for(i=1;i<=n;i++)
-					{
-						process[i].turnaround=process[i].wait+process[i].burst;
-						process[i].ratio=(float)process[i].turnaround/(float)process[i].burst;
-						printf("%5d%8d%7d%8d%10d%9d%10.1f",process[i].id,process[i].arrival,process[i].burst,process[i].wait,process[i].finish, process[i].turnaround, process[i].ratio);
-						tavg=tavg+process[i].turnaround;
-						wavg=wavg+process[i].wait;
-						printf("\n\n");
-					}
-					tavg=tavg/n;
-					wavg=wavg/n;
-					printf("tavg=%f\t wavg=f\n",tavg,wavg);
-					}
+			}
+		}
+		no=0;
+		j=1;
+		while(chkprocess(n)==1)
+		{
+			if (process(no+1].arrival==time)
+			{
+				no++;
+				if(process[j].rem==0)
+					process[i].finish=time;
+					j=nextprocess();
+			}
+			if(process[j].rem!=0)
+			{
+				process[j].rem--;
+				for(i=1;i<=no;i++)
+				{
+					if(i!=j&& process[i].rem!=0)
+					process[i].wait++;
+				}
+			}
+			else
+			{
+				process[i].finish=time;
+				j=nextprocess();
+				time--;
+				k=j;
+			}
+				time++;
+		}
+		process[k].finish=time;
+		printf("\n\n\t\t---SHORTEST REMAINING TIME FIRST--");
+		printf("\n\n process arrival burst waiting finishing turnaround tr/tb\n");
+		printf("%5s%9s%7s%10s%8s%9s\n\n", "id", "time", "time", "time", "time", "time");
+		for(i=1;i<=n;i++)
+		{
+			process[i].turnaround=process[i].wait+process[i].burst;
+			process[i].ratio=(float)process[i].turnaround/(float)process[i].burst;
+			printf("%5d%8d%7d%8d%10d%9d%10.1f",process[i].id,process[i].arrival,process[i].burst,process[i].wait,process[i].finish, process[i].turnaround, process[i].ratio);
+			tavg=tavg+process[i].turnaround;
+			wavg=wavg+process[i].wait;
+			printf("\n\n");
+		}
+		tavg=tavg/n;
+		wavg=wavg/n;
+		printf("tavg=%f\t wavg=f\n",tavg,wavg);
+	}
