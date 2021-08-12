@@ -1,192 +1,1005 @@
-#include<stdio.h>
-#include<stdlib.h>
-struct proc
-{
-	int id;
-	int arrival;
-	int burst;
-	int rem;
-	int wait;
-	int finish;
-	int turnaround;
-	float ratio;
-}
-process(10);
-struct proc temp;
-int no;
-int chkprocess(int);
-int nextprocess();
-void roundrobin(int,int,int[],int[]);
-void srtf(int);
-main()
-{
-	int n,tq,choice;
-	int bt[10],st[10],i,j,k;
-	for (;;)
-	{
-		printf("Enter the choice\n");
-		printf("1.round robin\n 2.srtın 3.exit\n");
-		scanf("%d",&choice);
-		switch(choice)
-		{
-			case 1:	printf("round robin scheduling algorithm\n");
-					printf("enter number of processes: \n");
-					scanf("%d",&n);
-					printf("enter burst time for sequences:");
-					for(i=0;i<n;i++)
-					{
-						scanf("%d",&bt[i]);
-						st[i]=bt[i];
-					}
-					printf("enter time quantum:");
-					scanf("%d", &tq);
-					roundrobin(n,tq,st,bt);
-					break;
-			case 2: printf("\n\n---SHORTEST REMAINING TIME NEXT--\n\n");
-					printf("\n\n enter the number of processes:");
-					scanf("%d",&n);
-					srtf(n);
-					break;
-					
-			case 3:	exit(0);
-		}	
-	}
-}
-void roundrobin(int n,int tq,int st[],int bt[])
-	{
-		int time=0;
-		int tat[10],wt[10],i,count=0,swt=0,stat=0,templ,sq=0,1,k;
-		float awt=0.0,atat=0.0;
-		while (1)
-		{
-			for (i=0,count=0;i<n;i++)
-			{
-				templ = tq;
-				if (st[i]==0)
-					{
-						count++
-						continue;
-					}
-				if (st[i]>tq)
-					st[i]=st[i]-tq;
-				else if(st[i]>=0)
-				{
-					templ=st[i];
-					st[i]=0;
-				}
-				sq=sq+templ;
-				tat[i]=sq;
-			}
-			if(n==count)
-				break;
-		}
-		for (i = 0; i < n; i++)
-		{
-			wt[i] = tat[i] - bt[i];
-			swt = swt + wt[i];
-			stat = stat + tat[i];
-		}
-		awt=(float)swt/n;
-		atat=(float)stat/n;
-		printf("process no burst time wait turn around time\n");
-		for (i = 0; i<n;i++)
-		printf("\t\t%d\t\tsalt\L3d\n", i + 1, bt[i], wt[i], tat(1); 
-		printf("avg wait time is $f\n avgturn around time is 8\n", awt, atat);
-	}
-	int chkprocess(int s);
-	{
-		int i;
-		for (i=1;i<=s;i++)
-		{
-			if (process[i].rem!=0)
-			return 1;
-		}
-		return 0;
-	}
-	int nextprocess()
-	{
-		int min,l,i;
-		min=32000;
-		for(i=1;i<=no;i++)
-		{
-			if(process[i].rem!=0&&process[i].rem<min)
-			{
-				min=process[i].rem;
-				l=i;
-			}
-		}
-		return l;
-	}
+ 
+PROGRAM 1: 
+ 
+Activity.xml 
+<?xml version="1.0" encoding="utf-8"?> 
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent" android:layout_height="match_parent" android:background="@color/white" tools:context=".MainActivity"> 
+ 
+<TextView android:id="@+id/textView" android:layout_width="287dp" android:layout_height="76dp" android:layout_marginTop="32dp" android:gravity="center" android:lineSpacingExtra="8sp" 
+android:text="NAVKIS COLLEGE ENGINEERING" 
+android:textAppearance="@style/TextAppearance.AppCompat.Large" android:textColor="@color/black" android:textSize="16sp" android:textStyle="bold|italic" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toStartOf="@+id/imageView" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" app:layout_constraintVertical_bias="0.014" /> 
+ 
+<ImageView android:id="@+id/imageView" android:layout_width="77dp" android:layout_height="123dp" android:layout_marginStart="8dp" android:layout_marginLeft="8dp" android:layout_marginTop="8dp" android:layout_marginEnd="8dp" android:layout_marginRight="8dp" android:layout_marginBottom="594dp" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toEndOf="@+id/textView" app:layout_constraintTop_toTopOf="parent" app:layout_constraintVertical_bias="0.117" app:srcCompat="@drawable/aiet" /> 
+ 
+<View android:id="@+id/divider" android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginTop="22dp" android:layout_marginBottom="853dp" android:background="?android:attr/listDivider" app:layout_constraintBottom_toTopOf="@+id/textView2" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/imageView" /> 
+ 
+<View android:id="@+id/divider2" android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginTop="37dp" android:background="?android:attr/listDivider" android:scrollbarSize="8dp" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.0" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" 
+app:layout_constraintVertical_bias="0.193" /> 
+ 
+<TextView android:id="@+id/textView3" android:layout_width="162dp" android:layout_height="40dp" android:layout_marginStart="32dp" android:layout_marginLeft="32dp" android:layout_marginEnd="32dp" android:layout_marginRight="32dp" android:gravity="center" android:text=" Name: Shilpa" android:textColor="#F44336" android:textSize="24sp" android:textStyle="bold" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.497" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/divider2" app:layout_constraintVertical_bias="0.154" /> 
+ 
+<TextView android:id="@+id/textView4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="32dp" android:layout_marginLeft="32dp" android:layout_marginEnd="32dp" android:layout_marginRight="32dp" android:gravity="center" 
+android:text=" Designation: Assistant Professor" 
+android:textColor="#F44336" android:textSize="18sp" android:textStyle="bold" 
+app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/textView3" app:layout_constraintVertical_bias="0.036" /> <TextView android:id="@+id/textView5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="32dp" android:layout_marginLeft="32dp" android:layout_marginEnd="32dp" android:layout_marginRight="32dp" android:gravity="center" android:text=" Phone no: 9900558810" android:textColor="#F44336" android:textSize="18sp" android:textStyle="bold" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.59" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/textView4" app:layout_constraintVertical_bias="0.058" /> 
+ 
+<TextView android:id="@+id/textView6" android:layout_width="343dp" android:layout_height="44dp" android:layout_marginStart="32dp" android:layout_marginLeft="32dp" android:layout_marginTop="15dp" android:layout_marginEnd="15dp" android:layout_marginRight="15dp" android:layout_marginBottom="278dp" 
+android:gravity="center" 
+android:text=" Address: Gurukurpa, Gandhinagar, Moodbidri, 574227" android:textColor="#F44336" android:textSize="18sp" android:textStyle="bold" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.0" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/textView5" app:layout_constraintVertical_bias="0.041" /> 
+ 
+<TextView android:id="@+id/textView7" android:layout_width="289dp" android:layout_height="25dp" android:layout_marginTop="23dp" android:gravity="center" android:text=" Email id: shilpa@aiet.org.in" 
+android:textColor="#F44336" android:textSize="18sp" android:textStyle="bold" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/textView6" app:layout_constraintVertical_bias="0.0" /> 
+</androidx.constraintlayout.widget.ConstraintLayout> 
+MainActivity.java 
+package com.example.p1; 
+ 
+import androidx.appcompat.app.AppCompatActivity; import android.os.Bundle; 
+public class MainActivity extends AppCompatActivity { 
+ 
+@Override 
+protected void onCreate(Bundle savedInstanceState) { 
+super.onCreate(savedInstanceState); 
+setContentView(R.layout.activity_main); 
+} 
+} 
+ 
+OUTPUT 
+  
+ 
+PROGRAM 2: 
+ 
+Activity.xml 
+<?xml version="1.0" encoding="utf-8"?> 
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent" android:layout_height="match_parent" 
+android:orientation="vertical" tools:context=".MainActivity"> 
+ 
+<EditText android:id="@+id/et" android:layout_width="match_parent" android:layout_height="wrap_content" android:ems="10" 
+android:inputType="textPersonName" 
+android:text="0" android:layout_weight="1" android:textSize="75dp" android:gravity="right|center" android:background="@color/gray"/> 
+ 
+<TableLayout android:layout_width="match_parent" android:layout_height="wrap_content"> 
+ 
+<TableRow android:layout_width="match_parent" android:layout_height="match_parent"> 
+ 
+<Button android:id="@+id/b7" android:layout_width="30pt" android:layout_height="30pt" android:layout_marginRight="1pt" android:layout_weight="1" android:background="#C7D0FB" 
+android:text="7" android:textSize="30dp" android:textColor="@color/black" 
+app:backgroundTint="#C7D0FB"></Button> 
+<Button android:layout_weight="1" android:layout_width="30pt" android:layout_height="30pt" android:layout_marginRight="1pt" android:text="8" android:textSize="30dp" android:background="#C7D0FB" android:textColor="@color/black" app:backgroundTint="#C7D0FB" android:id="@+id/b8"></Button> 
+<Button 
+android:layout_weight="1" android:layout_width="30pt" android:layout_height="30pt" android:layout_marginRight="1pt" android:text="9" android:textSize="30dp" android:background="#C7D0FB" android:textColor="@color/black" app:backgroundTint="#C7D0FB" android:id="@+id/b9"></Button> 
+<Button android:layout_weight="1" android:layout_width="30pt" android:layout_height="30pt" android:layout_marginRight="1pt" android:text="/" android:textSize="30dp" android:background="#C7D0FB" 
+android:id="@+id/bdiv"></Button> 
+ 
+</TableRow> 
+<TableRow android:layout_width="match_parent" android:layout_height="match_parent"> 
+<Button android:layout_weight="1" android:layout_width="30pt" android:layout_height="30pt" android:layout_marginRight="1pt" android:text="4" android:textSize="30dp" android:background="#C7D0FB" android:textColor="@color/black" app:backgroundTint="#C7D0FB" android:id="@+id/b4"></Button> 
+<Button android:layout_weight="1" android:layout_width="30pt" android:layout_height="30pt" android:layout_marginRight="1pt" android:text="5" android:textSize="30dp" android:background="#C7D0FB" android:textColor="@color/black" app:backgroundTint="#C7D0FB" android:id="@+id/b5"></Button> 
+<Button android:layout_weight="1" android:layout_width="30pt" android:layout_height="30pt" android:layout_marginRight="1pt" android:text="6" android:textSize="30dp" android:background="#C7D0FB" android:textColor="@color/black" app:backgroundTint="#C7D0FB" android:id="@+id/b6"></Button> 
+<Button android:layout_weight="1" android:layout_width="30pt" android:layout_height="30pt" android:layout_marginRight="1pt" 
+android:text="*" android:textSize="30dp" android:background="#C7D0FB" 
+android:id="@+id/bmul"></Button> 
+ 
+</TableRow> 
+<TableRow android:layout_width="match_parent" android:layout_height="match_parent"> 
+<Button android:layout_weight="1" android:layout_width="30pt" android:layout_height="30pt" android:layout_marginRight="1pt" android:text="1" android:textSize="30dp" android:background="#C7D0FB" android:textColor="@color/black" app:backgroundTint="#C7D0FB" android:id="@+id/b1"></Button> 
+<Button android:layout_weight="1" android:layout_width="30pt" android:layout_height="30pt" android:layout_marginRight="1pt" android:text="2" android:textSize="30dp" android:background="#C7D0FB" android:textColor="@color/black" app:backgroundTint="#C7D0FB" android:id="@+id/b2"></Button> 
+<Button android:layout_weight="1" android:layout_width="30pt" android:layout_height="30pt" android:layout_marginRight="1pt" android:text="3" android:textSize="30dp" android:background="#C7D0FB" android:textColor="@color/black" app:backgroundTint="#C7D0FB" android:id="@+id/b3"></Button> 
+<Button android:layout_weight="1" android:layout_width="30pt" android:layout_height="30pt" android:layout_marginRight="1pt" 
+android:text="-" android:textSize="30dp" android:background="#C7D0FB" android:id="@+id/bsub"></Button> 
+ 
+</TableRow> 
+<TableRow android:layout_width="match_parent" android:layout_height="match_parent"> 
+<Button android:layout_weight="1" android:layout_width="30pt" android:layout_height="30pt" android:layout_marginRight="1pt" 
+android:text="." android:textSize="30dp" android:background="#C7D0FB" android:textColor="@color/black" app:backgroundTint="#C7D0FB" android:id="@+id/bdot"></Button> 
+<Button android:layout_weight="1" android:layout_width="30pt" android:layout_height="30pt" android:layout_marginRight="1pt" android:text="0" android:textSize="30dp" android:background="#C7D0FB" android:textColor="@color/black" app:backgroundTint="#C7D0FB" android:id="@+id/b0"></Button> 
+<Button android:layout_weight="1" android:layout_width="30pt" android:layout_height="30pt" android:layout_marginRight="1pt" android:text="C" android:textSize="30dp" android:background="#C7D0FB" android:textColor="@color/black" app:backgroundTint="#C7D0FB" android:id="@+id/bclear"></Button> 
+<Button android:layout_weight="1" android:layout_width="30pt" android:layout_height="30pt" android:layout_marginRight="1pt" android:text="+" android:textSize="30dp" android:background="#C7D0FB" android:id="@+id/badd"></Button> 
+ 
+ 
+</TableRow> 
+<TableRow android:layout_width="match_parent" android:layout_height="match_parent"> 
+ 
+<Button android:layout_weight="1" android:layout_width="30pt" android:layout_height="30pt" android:layout_marginRight="1pt" android:text="back" android:textSize="25dp" android:background="#C7D0FB" android:id="@+id/bb"></Button> 
+<Button android:id="@+id/bequal" android:layout_width="30pt" android:layout_height="30pt" android:layout_marginRight="1pt" android:layout_weight="1" android:background="#C7D0FB" android:text="=" 
+android:textSize="30dp"></Button> 
+<Button android:layout_weight="1" android:layout_width="30pt" android:layout_height="30pt" android:layout_marginRight="1pt" android:text="%" android:textSize="30dp" android:background="#C7D0FB" android:id="@+id/brem"></Button> 
+</TableRow> 
+</TableLayout> 
+</LinearLayout> 
+ 
+ 
+MainActivity.java 
+package com.example.calculator; 
+import androidx.appcompat.app.AppCompatActivity; import android.os.Bundle; import android.view.View; import android.widget.Button; import android.widget.EditText; 
+ 
+public class MainActivity extends AppCompatActivity { 
+Button bt0, bt1, bt2,bt3,bt4,bt5,bt6,bt7,bt8,bt9,btdot,btadd,btsub,btmul,btdiv,btrem,btclear,bspace,btequ; 
+EditText edittext; float mv,mvt; 
+boolean add,sub,mul,div,rem; 
+@Override 
+protected void onCreate(Bundle savedInstanceState) { super.onCreate(savedInstanceState); setContentView(R.layout.activity_main); bt0  =  (Button)  findViewById(R.id.b0); bt1  =  (Button)  findViewById(R.id.b1); bt2  =  (Button)  findViewById(R.id.b2); bt3  =  (Button)  findViewById(R.id.b3); bt4  =  (Button)  findViewById(R.id.b4); bt5  =  (Button)  findViewById(R.id.b5); bt6  =  (Button)  findViewById(R.id.b6); bt7  =  (Button)  findViewById(R.id.b7); bt8  =  (Button)  findViewById(R.id.b8); bt9 = (Button) findViewById(R.id.b9); btdot = (Button) findViewById(R.id.bdot); btadd = (Button) findViewById(R.id.badd); btsub = (Button) findViewById(R.id.bsub); btmul = (Button) findViewById(R.id.bmul); btdiv = (Button) findViewById(R.id.bdiv); btclear = (Button) findViewById(R.id.bclear); btequ = (Button) findViewById(R.id.bequal); btdot=(Button) findViewById(R.id.bdot); btrem=(Button) findViewById(R.id.brem); bspace=(Button) findViewById(R.id.bb); edittext = (EditText) findViewById(R.id.et); bt0.setOnClickListener(new View.OnClickListener() { 
+@Override 
+public void onClick(View v) { edittext.setText(edittext.getText() + "0"); 
+} 
+}); 
+bt1.setOnClickListener(new View.OnClickListener() { 
+@Override public void onClick(View v) { 
+edittext.setText(edittext.getText() + "1"); 
+} 
+}); 
+bt2.setOnClickListener(new View.OnClickListener() { 
+@Override public void onClick(View v) { 
+edittext.setText(edittext.getText() + "2"); 
+} 
+}); 
+bt3.setOnClickListener(new View.OnClickListener() { 
+@Override public void onClick(View v) { 
+edittext.setText(edittext.getText() + "3"); 
+} 
+}); 
+bt4.setOnClickListener(new View.OnClickListener() { 
+@Override public void onClick(View v) { 
+edittext.setText(edittext.getText() + "4"); 
+} 
+}); 
+bt5.setOnClickListener(new View.OnClickListener() { 
+@Override public void onClick(View v) { 
+edittext.setText(edittext.getText() + "5"); 
+} 
+}); 
+bt6.setOnClickListener(new View.OnClickListener() { 
+@Override public void onClick(View v) { 
+edittext.setText(edittext.getText() + "6"); 
+} 
+}); 
+bt7.setOnClickListener(new View.OnClickListener() { 
+@Override public void onClick(View v) { 
+edittext.setText(edittext.getText() + "7"); 
+} 
+}); 
+bt8.setOnClickListener(new View.OnClickListener() { 
+@Override public void onClick(View v) { 
+edittext.setText(edittext.getText() + "8"); 
+} 
+}); 
+bt9.setOnClickListener(new View.OnClickListener() { 
+@Override public void onClick(View v) { 
+edittext.setText(edittext.getText() + "9"); 
+} 
+}); 
+btdot.setOnClickListener(new View.OnClickListener() { 
+@Override public void onClick(View v) { 
+edittext.setText(edittext.getText() + "."); 
+} 
+}); 
+btadd.setOnClickListener(new View.OnClickListener() { 
+@Override public void onClick(View v) { 
+ 
+if (edittext == null) { edittext.setText(""); 
+} else { mv = Float.parseFloat(edittext.getText() + ""); add = true; 
+edittext.setText(null); 
+} 
+} 
+}); 
+btsub.setOnClickListener(new View.OnClickListener() { 
+@Override public void onClick(View v) { 
+mv = Float.parseFloat(edittext.getText() + ""); sub = true; 
+edittext.setText(null); 
+} 
+}); 
+btmul.setOnClickListener(new View.OnClickListener() { 
+@Override public void onClick(View v) { 
+mv = Float.parseFloat(edittext.getText() + ""); mul = true; 
+edittext.setText(null); 
+} 
+}); 
+btdiv.setOnClickListener(new View.OnClickListener() { 
+@Override public void onClick(View v) { 
+mv = Float.parseFloat(edittext.getText() + ""); div = true; 
+edittext.setText(null); 
+} 
+}); 
+btrem.setOnClickListener(new View.OnClickListener() { 
+@Override public void onClick(View v) { 
+mv = Float.parseFloat(edittext.getText() + ""); rem = true; edittext.setText(null); 
+} 
+}); 
+btequ.setOnClickListener(new View.OnClickListener() { 
+@Override public void onClick(View v) { 
+mvt = Float.parseFloat(edittext.getText() + ""); 
+ 
+if (add == true) { 
+edittext.setText(mv + mvt + ""); add = false; 
+} 
+ 
+if (sub == true) { 
+edittext.setText(mv - mvt + ""); sub = false; 
+} 
+if (mul == true) { edittext.setText(mv * mvt + ""); mul = false; 
+} 
+ 
+if (div == true) { edittext.setText(mv / mvt + ""); 
+div = false; 
+} 
+if (rem == true) { edittext.setText(mv % mvt + ""); 
+div = false; 
+} 
+} 
+}); 
+btclear.setOnClickListener(new View.OnClickListener() { 
+@Override 
+public void onClick(View v) { edittext.setText(""); 
+} 
+}); 
+bspace.setOnClickListener(new View.OnClickListener() { 
+@Override 
+public void onClick(View v) { 
+String   textInBox    =    edittext.getText().toString(); 
+if (textInBox.length() > 0) { 
+String newText = textInBox.substring(0, textInBox.length()-1); edittext.setText(newText); 
+} 
+} 
+}); 
+} 
+} 
+ 
+Colors.xml 
+<?xml version="1.0" encoding="utf-8"?> 
+<resources> 
+<color  name="purple_200">#FFBB86FC</color> <color  name="purple_500">#FF6200EE</color> 
+<color name="purple_700">#FF3700B3</color> 
+<color name="teal_200">#0FF</color> 
+<color name="teal_700">#FF018786</color> 
+<color name="black">#FF000000</color> 
+<color name="white">#FFFFFFFF</color> 
+<color name="gray">#D8D8D8</color> </resources> 
+ 
+ 
+PROGRAM 3: 
+ 
+activity_main.xml 
+<?xml version="1.0" encoding="utf-8"?> 
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent" android:layout_height="match_parent" tools:context=".MainActivity"> 
+ 
+<TextView android:id="@+id/textView2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="76dp" android:text="Signup Activity" android:textColor="@color/black" android:textSize="34sp" android:textStyle="bold" 
+app:layout_constraintLeft_toLeftOf="parent" app:layout_constraintRight_toRightOf="parent" app:layout_constraintTop_toTopOf="parent" /> 
+ 
+<TextView android:id="@+id/textView" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="76dp" android:layout_marginEnd="28dp" android:layout_marginRight="28dp" android:text="Username:" android:textColor="@color/black" android:textSize="20sp" android:textStyle="bold" app:layout_constraintEnd_toStartOf="@+id/user" app:layout_constraintHorizontal_bias="1.0" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/textView2" /> <EditText android:id="@+id/user" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="68dp" android:layout_marginEnd="12dp" android:layout_marginRight="12dp" android:ems="10"  android:hint="Enter User Name Here" android:inputType="textPersonName" app:layout_constraintEnd_toEndOf="parent" 
+app:layout_constraintTop_toBottomOf="@+id/textView2" /> 
+ 
+<TextView android:id="@+id/textView3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="60dp" android:layout_marginEnd="36dp" android:layout_marginRight="36dp" android:text="Password" android:textColor="@color/black" android:textSize="20sp" android:textStyle="bold" app:layout_constraintEnd_toStartOf="@+id/pass" app:layout_constraintHorizontal_bias="1.0" app:layout_constraintStart_toStartOf="parent" 
+app:layout_constraintTop_toBottomOf="@+id/textView" /> 
+ 
+<EditText android:id="@+id/pass" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="44dp" android:layout_marginEnd="16dp" android:layout_marginRight="16dp" android:ems="10" android:hint="Enter The Password Here" android:inputType="textPassword" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toBottomOf="@+id/user" /> 
+ 
+<Button android:id="@+id/s1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="36dp" android:text="SignUp" android:textColor="#EFEDED" android:textSize="20sp" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/pass"  /> 
+</androidx.constraintlayout.widget.ConstraintLayout> 
+activity_login.xml 
+<?xml version="1.0" encoding="utf-8"?> 
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android" 
+xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent" android:layout_height="match_parent" tools:context=".LoginActivity"> 
+ 
+<TextView android:id="@+id/textView4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="60dp" android:text="Login Activity" android:textColor="#191818" android:textSize="34sp" android:textStyle="bold" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.467" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" /> 
+ 
+<TextView android:id="@+id/textView5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="36dp" android:layout_marginLeft="36dp" android:layout_marginTop="92dp" android:text="Username" android:textColor="@color/black" android:textSize="20sp" android:textStyle="bold" app:layout_constraintEnd_toStartOf="@+id/usern" app:layout_constraintHorizontal_bias="0.396" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/textView4" /> 
+ 
+<TextView android:id="@+id/textView6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="60dp" android:layout_marginEnd="48dp" android:layout_marginRight="48dp" android:text="Password" android:textColor="#171717" android:textSize="20sp" android:textStyle="bold" 
+app:layout_constraintEnd_toStartOf="@+id/passw" app:layout_constraintHorizontal_bias="1.0" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/textView5" /> 
+ 
+<Button android:id="@+id/login" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="28dp" 
+android:text="Login" android:textSize="24sp" android:textStyle="bold" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.541" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/textView2" /> 
+ 
+<EditText android:id="@+id/usern" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="76dp" android:ems="10"  android:hint="Enter User Name" android:inputType="textPersonName" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toBottomOf="@+id/textView4" /> 
+ 
+<EditText android:id="@+id/passw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="52dp" android:ems="10"  android:hint="Enter Valid Password" android:inputType="textPassword" app:layout_constraintEnd_toEndOf="parent" 
+app:layout_constraintTop_toBottomOf="@+id/usern" /> 
+ 
+<TextView android:id="@+id/textView2" android:layout_width="176dp" android:layout_height="36dp" 
+ 
+android:layout_alignParentStart="true" android:layout_alignParentLeft="true" android:layout_marginTop="52dp" android:text="Attempts Left:" android:textColor="#222121" android:textSize="24sp" android:textStyle="bold" app:layout_constraintEnd_toStartOf="@+id/textView3" app:layout_constraintHorizontal_bias="0.419" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/textView6" /> 
+ 
+<TextView android:id="@+id/textView3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignTop="@+id/textView2" android:layout_alignBottom="@+id/textView2" android:layout_alignParentEnd="true" android:layout_alignParentRight="true" android:layout_marginTop="40dp" android:layout_marginEnd="88dp" android:layout_marginRight="88dp" android:text="New Text" android:textColor="@color/black" android:textSize="20sp" android:textStyle="bold" android:visibility="invisible" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toBottomOf="@+id/passw"  /> 
+</androidx.constraintlayout.widget.ConstraintLayout> 
+ 
+ 
+activity_success.xml 
+<?xml version="1.0" encoding="utf-8"?> 
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android" 
+xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent" android:layout_height="match_parent" tools:context=".SuccessActivity"> 
+ 
+<TextView android:id="@+id/textView7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Login Successful" android:textAllCaps="false" android:textColor="#673AB7" android:textSize="40sp" android:textStyle="bold|italic" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" /> 
+</androidx.constraintlayout.widget.ConstraintLayout> 
+ 
+MainActivity.java 
+package com.example.signup; import androidx.appcompat.app.AppCompatActivity; 
+import android.content.Intent; import android.os.Bundle; import android.view.View; import android.widget.Button; import android.widget.EditText; import android.widget.Toast; import java.util.regex.Pattern; public class MainActivity extends AppCompatActivity { 
+@Override 
+protected void onCreate(Bundle savedInstanceState) { 
+EditText un,pswd; Button signup; 
+super.onCreate(savedInstanceState); setContentView(R.layout.activity_main); un=(EditText)findViewById(R.id.user); pswd=(EditText)findViewById(R.id.pass); signup=(Button)findViewById(R.id.s1); signup.setOnClickListener(new  View.OnClickListener() { 
+public void onClick(View view) 
+{ 
+String user=un.getText().toString(); String password = pswd.getText().toString(); if(user.length()==0) 
+{ 
+un.setError("USername is empty"); un.requestFocus(); 
+} 
+else if(password.length()==0) 
+{ 
+pswd.setError("password is empty"); pswd.requestFocus(); 
+} 
+else 
+{ 
+if(!isValidpassword(password)) 
+{ 
+Toast.makeText(MainActivity.this, "Password dosenot match with 
+pattern",Toast.LENGTH_LONG).show(); 
+ 
+} 
+else 
+{ 
+Intent intent = new Intent(MainActivity.this, LoginActivity.class); intent.putExtra("username", user); intent.putExtra("password", password); 
+startActivity(intent); 
+} 
+} 
+} 
+}); } 
+Pattern lowercase=Pattern.compile("^.*[a-z].*$"); 
+Pattern uppercase=Pattern.compile("^.*[A-Z].*$"); 
+Pattern   number=Pattern.compile("^.*[0-9].*$"); Pattern specialc=Pattern.compile("^.*[^a-zA-Z0-9].*$"); public Boolean isValidpassword(String password) 
+{ 
+if(password.length()<8) 
+{ 
+return false; 
+} 
+if(!lowercase.matcher(password).matches()) 
+{ 
+return false; 
+} 
+if(!uppercase.matcher(password).matches()) 
+{ 
+return false; 
+} 
+if(!number.matcher(password).matches()) 
+{ 
+return false; 
+} 
+if(!specialc.matcher(password).matches()) 
+{ 
+return false; 
+} 
+return true; 
+} 
+ 
+} 
+ 
+LoginActivity.java 
+package com.example.signup; 
+import androidx.appcompat.app.AppCompatActivity; 
+import android.content.Intent; import android.graphics.Color; import  android.os.Bundle; import  android.view.View; import android.widget.Button; import android.widget.EditText; import android.widget.TextView; import android.widget.Toast; public class LoginActivity extends AppCompatActivity { 
+EditText usr, pswd1; 
+Button login; TextView txt; 
+int counter = 3; 
+ 
+@Override 
+protected void onCreate(Bundle savedInstanceState) { super.onCreate(savedInstanceState); setContentView(R.layout.activity_login); usr = (EditText) findViewById(R.id.usern); pswd1 = (EditText) findViewById(R.id.passw); login = (Button) findViewById(R.id.login); txt = (TextView) findViewById(R.id.textView3); 
+String reusername = getIntent().getStringExtra("username"); String repassword = getIntent().getStringExtra("password"); login.setOnClickListener(new View.OnClickListener() { public void onClick(View view) { 
+String username1 = usr.getText().toString(); String password1 = pswd1.getText().toString(); 
+if (reusername.equals(username1) && repassword.equals(password1)) 
+{ 
+Intent intent = new Intent(LoginActivity.this, 
+SuccessActivity.class); startActivity(intent); txt.setVisibility(View.VISIBLE); txt.setBackgroundColor(Color.RED); counter--; txt.setText(Integer.toString(counter)); 
+} 
+else 
+{ 
+Toast.makeText(LoginActivity.this, "Invalid Cerdentials", 
+Toast.LENGTH_LONG).show(); txt.setVisibility(View.VISIBLE); txt.setBackgroundColor(Color.RED); counter--; 
+txt.setText(Integer.toString(counter)); 
+} 
+if (counter == 0) { 
+Toast.makeText(LoginActivity.this, "FAILED LOGIN ATTEMPTS",  	Toast.LENGTH_LONG).show(); 
+ 	login.setEnabled(false); 
+ 	} 
+ 
+} 
+}); 
+} 
+} 
+ 
+SuccessActivity.java 
+package com.example.signup; 
+ 
+import androidx.appcompat.app.AppCompatActivity; import android.os.Bundle; 
+public  class  SuccessActivity  extends  AppCompatActivity  { 
+ 
+@Override 
+protected void onCreate(Bundle savedInstanceState) { 
+super.onCreate(savedInstanceState); 
+setContentView(R.layout.activity_success); 
+} 
+ 	 	 	 
 
-	void srtf(int n)
-	{
-		int i,j,k,time=0;
-		float tavg=0,wavg=0;
-		for(i=1;i<=n;i++)
-		{
-			process[i].id=i;
-			printf("\n\n enter the arrival time for process %d:", i);
-			scanf("%d", &(process[i].arrival));
-			printf("enter the burst time for process %d:", i);
-			scanf("%d", &(process[i].burst));
-			process[i].rem = process[i].burst;
-		}
+ 
+PROGRAM 4: 
+Activity.xml 
+<?xml version="1.0" encoding="utf-8"?> 
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent" android:layout_height="match_parent" android:background="#F3D9B4" tools:context=".MainActivity"> 
+ 
+<TextView android:id="@+id/textView" android:layout_width="wrap_content" android:layout_height="wrap_content" android:gravity="center" 
+android:text="Wallpaper Changing Application" android:textColor="#673AB7" android:textSize="36sp" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintHorizontal_bias="0.0" app:layout_constraintLeft_toLeftOf="parent" app:layout_constraintRight_toRightOf="parent" app:layout_constraintTop_toTopOf="parent" app:layout_constraintVertical_bias="0.081" /> 
+ 
+<Button android:id="@+id/button2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="172dp" android:text="Click Here To Change Wallpaper" android:textColor="#FAF6F6" android:textStyle="bold" app:backgroundTint="#6F46B8" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" 
+app:layout_constraintTop_toBottomOf="@+id/textView" /> 
+ 
+</androidx.constraintlayout.widget.ConstraintLayout> 
+ 
+ 
+MainActivity.java 
+package com.example.wallpaper; 
+import androidx.appcompat.app.AppCompatActivity; import android.app.WallpaperManager; import android.graphics.Bitmap; import  android.graphics.BitmapFactory; import android.graphics.drawable.AnimationDrawable; import android.graphics.drawable.BitmapDrawable; import android.graphics.drawable.Drawable; import android.os.Bundle; 
+ 
+import android.view.View; import android.widget.Button; import android.widget.Toast; import java.io.IOException; import java.util.Timer; import java.util.TimerTask; 
+public class MainActivity extends AppCompatActivity { 
+Button changewallpaper; Timer  mytimer; 
+Drawable drawable; WallpaperManager wpm; int prev=1; @Override 
+protected void onCreate(Bundle savedInstanceState) { super.onCreate(savedInstanceState); setContentView(R.layout.activity_main); mytimer = new Timer(); wpm = WallpaperManager.getInstance(this); changewallpaper = findViewById(R.id.button2); 
+changewallpaper.setOnClickListener(new View.OnClickListener() { 
+@Override public void onClick(View view) { setWallpaper(); 
+} 
+}); 
+} 
+private void setWallpaper() { 
+mytimer.schedule(new TimerTask() { 
+@Override 
+public void run() { if(prev==1) { drawable = getResources().getDrawable(R.drawable.one); prev = 2; 
+} 
+else if(prev==2) { 
+drawable = getResources().getDrawable(R.drawable.two); prev=3; 
+} 
+else if(prev==3) { 
+drawable = getResources().getDrawable(R.drawable.three); prev=4; 
+} 
+else if(prev==4) { 
+drawable = getResources().getDrawable(R.drawable.four); prev=5; 
+} 
+else if(prev==5) { 
+drawable = getResources().getDrawable(R.drawable.five); prev=1; 
+} 
+Bitmap   wallpaper    =    ((BitmapDrawable)drawable).getBitmap(); try { 
+wpm.setBitmap(wallpaper); 
+} catch (IOException e) { 
+e.printStackTrace(); 
+} 
+} 
+},0,30000); } } 
+AndroidManifest.xml 
+<?xml version="1.0" encoding="utf-8"?> 
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.example.wallpaper" > 
+<uses-permission   android:name="android.permission.SET_WALLPAPER"/> 
+<application  android:allowBackup="true" android:icon="@mipmap/ic_launcher" android:label="@string/app_name" 
+android:roundIcon="@mipmap/ic_launcher_round" 
+android:supportsRtl="true" android:theme="@style/Theme.Wallpaper" > 
+<activity android:name=".MainActivity" > 
+<intent-filter> 
+<action  android:name="android.intent.action.MAIN"  /> 
+ 
+<category  android:name="android.intent.category.LAUNCHER"  /> </intent-filter> 
+</activity> 
+</application> 
+ 
+</manifest> 
+ 
+PROGRAM 5: 
+Activity.xml 
+<?xml version="1.0" encoding="utf-8"?> 
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" 
+android:orientation ="vertical" android:layout_width="match_parent" android:layout_height="fill_parent"> 
+ 
+<TextView android:id="@+id/textView" android:layout_width="287dp" android:layout_height="40dp" android:gravity="center" 
+android:text="COUNTER APPLICATION" 
+android:textColor="#151515" android:textSize="24sp" android:textStyle="bold" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" app:layout_constraintVertical_bias="0.046" /> 
+ 
+<Chronometer android:id="@+id/chronometer" android:layout_width="264dp" android:layout_height="59dp" 
+android:layout_gravity="center_horizontal" android:layout_marginTop="52dp" android:gravity="center" android:textColor="@color/black" android:textSize="36sp" android:textStyle="bold|italic" 
+app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.578" app:layout_constraintStart_toStartOf="parent" 
+app:layout_constraintTop_toBottomOf="@+id/textView" /> 
+ 
+<Button android:id="@+id/buttonstart" android:layout_width="180dp" android:layout_height="57dp" android:layout_marginTop="84dp" android:background="#03A9F4" android:text="Start" 
+android:textColor="@color/black" android:textStyle="bold" app:backgroundTint="#03A9F4" app:iconTint="#EDF6FA" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.0" app:layout_constraintStart_toStartOf="parent" 
+app:layout_constraintTop_toBottomOf="@+id/chronometer" /> 
+ 
+<Button android:id="@+id/buttonstop" android:layout_width="180dp" android:layout_height="57dp" android:layout_marginTop="84dp" android:background="#03A9F4" android:text="Stop" 
+android:textColor="@color/black" android:textStyle="bold" app:backgroundTint="#03A9F4" app:iconTint="#03A9F4" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="1.0" app:layout_constraintStart_toEndOf="@+id/buttonstart" app:layout_constraintTop_toBottomOf="@+id/chronometer" /> 
+ 
+<Button android:id="@+id/buttonreset" android:layout_width="180dp" android:layout_height="57dp" android:layout_marginTop="32dp" android:background="#03A9F4" android:text="Reset" android:textColor="@color/black" android:textStyle="bold" app:backgroundTint="#03A9F4" app:iconTint="#03A9F4" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.515" app:layout_constraintStart_toStartOf="parent" 
+app:layout_constraintTop_toBottomOf="@+id/buttonstop"  /> </androidx.constraintlayout.widget.ConstraintLayout> 
+ 
+ 
+MainActivity.java 
+package com.example.counter; import android.app.Activity; import android.os.Bundle; import android.os.SystemClock; import android.view.View; import android.widget.Button; import android.widget.Chronometer; 
+ 
+public class MainActivity extends Activity { private long lastpause; 
+@Override 
+public void onCreate(Bundle savedInstanceState) { super.onCreate(savedInstanceState); setContentView(R.layout.activity_main); 
+final Chronometer myChronometer = (Chronometer)findViewById(R.id.chronometer); 
+Button buttonStart = (Button)findViewById(R.id.buttonstart); 
+Button buttonStop = (Button)findViewById(R.id.buttonstop); 
+Button buttonReset = (Button)findViewById(R.id.buttonreset); 
+buttonStart.setOnClickListener(new   Button.OnClickListener(){ 
+ 
+@Override 
+public void onClick(View v) { if(lastpause != 0) 
+{ 
+	myChronometer.setBase(myChronometer.getBase() + 	SystemClock.elapsedRealtime() 
+- lastpause); 
+} 
+else 
+{ 
+myChronometer.setBase(SystemClock.elapsedRealtime()); 
+} 
+ 	myChronometer.start();  	buttonStart.setEnabled(false); 
+buttonStop.setEnabled(true); 
+} 
+}); 
+ 
+buttonStop.setOnClickListener(new  Button.OnClickListener(){ 
+ 
+@Override 
+public void onClick(View v) { lastpause =SystemClock.elapsedRealtime(); myChronometer.stop(); buttonStop.setEnabled(false); buttonStart.setEnabled(true); 
+} 
+}); 
+ 
+buttonReset.setOnClickListener(new Button.OnClickListener(){ 
+@Override 
+public void onClick(View v) { myChronometer.setBase(SystemClock.elapsedRealtime()); 
+} }); 
+} 
+} 
+ 
 
-		for(i=0;i<=n;i++)
-		{
-			for(j=i+1;j<=n;j++)
-			{
-				if (process[i].arrival > process(j).arrival)
-				{
-					temp = process[i];
-					process[i] = process[j];
-					process[j] = temp;
-				}
-			}
-		}
-		no=0;
-		j=1;
-		while(chkprocess(n)==1)
-		{
-			if (process(no+1].arrival==time)
-			{
-				no++;
-				if(process[j].rem==0)
-					process[i].finish=time;
-					j=nextprocess();
-			}
-			if(process[j].rem!=0)
-			{
-				process[j].rem--;
-				for(i=1;i<=no;i++)
-				{
-					if(i!=j&& process[i].rem!=0)
-					process[i].wait++;
-				}
-			}
-			else
-			{
-				process[i].finish=time;
-				j=nextprocess();
-				time--;
-				k=j;
-			}
-				time++;
-		}
-		process[k].finish=time;
-		printf("\n\n\t\t---SHORTEST REMAINING TIME FIRST--");
-		printf("\n\n process arrival burst waiting finishing turnaround tr/tb\n");
-		printf("%5s%9s%7s%10s%8s%9s\n\n", "id", "time", "time", "time", "time", "time");
-		for(i=1;i<=n;i++)
-		{
-			process[i].turnaround=process[i].wait+process[i].burst;
-			process[i].ratio=(float)process[i].turnaround/(float)process[i].burst;
-			printf("%5d%8d%7d%8d%10d%9d%10.1f",process[i].id,process[i].arrival,process[i].burst,process[i].wait,process[i].finish, process[i].turnaround, process[i].ratio);
-			tavg=tavg+process[i].turnaround;
-			wavg=wavg+process[i].wait;
-			printf("\n\n");
-		}
-		tavg=tavg/n;
-		wavg=wavg/n;
-		printf("tavg=%f\t wavg=f\n",tavg,wavg);
-	}
+
+
+ 
+PROGRAM 6: 
+Activity.xml 
+<?xml version="1.0" encoding="utf-8"?> 
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@color/white" android:orientation="vertical" tools:context=".MainActivity"> 
+ 
+<TextView android:id="@+id/textView7" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center" 
+android:text="Parsing JSON and XML Data" android:textColor="@color/black" android:textSize="28sp" /> 
+ 
+<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="10dp" android:orientation="horizontal"> 
+ 
+<Button android:id="@+id/jsonBtn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1" android:text="Json" android:textColor="@color/black" android:textSize="20sp" android:textStyle="bold" 
+app:backgroundTint="@color/teal_200" /> 
+<Button android:id="@+id/xmlBtn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="10dp" android:layout_marginLeft="10dp" android:layout_weight="1" android:text="Xml" 
+android:textColor="@color/black" android:textSize="20sp" android:textStyle="bold" 
+app:backgroundTint="@color/teal_200" /> 
+</LinearLayout> 
+<TableLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="10dp" android:stretchColumns="*"> 
+<TableRow android:layout_width="match_parent" 
+android:layout_height="match_parent"> 
+ 
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="5dp" android:gravity="center" android:text="JSON DATA" android:textColor="@color/black" android:textStyle="bold" /> 
+</TableRow> 
+ 
+<TableRow android:layout_width="match_parent" 
+android:layout_height="match_parent"> 
+ 
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="5dp" android:text="City_Name:" android:textColor="@color/black" /> 
+ 
+<TextView android:id="@+id/cityName" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="5dp" android:gravity="center" android:text="" 
+android:textColor="@color/black" /> 
+ 
+</TableRow> 
+ 
+<TableRow android:layout_width="match_parent" 
+android:layout_height="match_parent"> 
+ 
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="5dp" android:text="Latitude:" 
+android:textColor="@color/black" /> 
+ 
+<TextView android:id="@+id/latitude" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="5dp" android:text="" 
+android:textColor="@color/black" /> 
+ 
+</TableRow> 
+ 
+<TableRow 
+android:layout_width="match_parent" android:layout_height="match_parent"> 
+ 
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="5dp" android:text="Longitude:" android:textColor="@color/black" /> 
+ 
+<TextView android:id="@+id/longitude" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="5dp" 
+android:textColor="@color/black" /> 
+ 
+</TableRow> 
+ 
+<TableRow android:layout_width="match_parent" 
+android:layout_height="match_parent"> 
+ 
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="5dp" android:text="Temperature:" 
+android:textColor="@color/black" /> 
+ 
+<TextView android:id="@+id/temperature" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="5dp" 
+android:textColor="@color/black" /> 
+ 
+</TableRow> 
+ 
+<TableRow android:layout_width="match_parent" 
+android:layout_height="match_parent"> 
+ 
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="5dp" android:text="Humidity:" android:textColor="@color/black" /> 
+ 
+<TextView android:id="@+id/humidity" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="5dp" 
+android:textColor="@color/black" /> 
+ 
+</TableRow> 
+ 
+</TableLayout> 
+<TableLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="10dp" 
+android:stretchColumns="*"> 
+ 
+<TableRow android:layout_width="match_parent" 
+android:layout_height="match_parent"> 
+ 
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="5dp" android:gravity="center" android:text="XML DATA" android:textColor="@color/black" 
+android:textStyle="bold" /> 
+</TableRow> 
+<TableRow android:layout_width="match_parent" 
+android:layout_height="match_parent"> 
+ 
+<TextView android:text="City_Name:" android:layout_margin="5dp" android:layout_width="wrap_content" android:textColor="@color/black" 
+android:layout_height="wrap_content" /> 
+ 
+<TextView android:id="@+id/cityName1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="5dp" 
+android:textColor="@color/black" /> 
+ 
+</TableRow> 
+ 
+<TableRow android:layout_width="match_parent" 
+android:layout_height="match_parent"> 
+ 
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="5dp" android:text="Latitude:" 
+android:textColor="@color/black" /> 
+ 
+<TextView android:id="@+id/latitude1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="5dp" 
+android:textColor="@color/black" /> 
+ 
+</TableRow> 
+ 
+<TableRow android:layout_width="match_parent" android:layout_height="match_parent"> 
+ 
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="5dp" android:text="Longitude:" android:textColor="@color/black" /> 
+ 
+<TextView android:id="@+id/longitude1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="5dp" android:textColor="@color/black" /> 
+ 
+</TableRow> 
+ 
+<TableRow android:layout_width="match_parent" android:layout_height="match_parent"> 
+ 
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="5dp" android:text="Temperature:" 
+android:textColor="@color/black" /> 
+ 
+<TextView android:id="@+id/temperature1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="5dp" android:textColor="@color/black" /> 
+ 
+</TableRow> 
+ 
+<TableRow android:layout_width="match_parent" android:layout_height="match_parent"> 
+ 
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="5dp" android:text="Humidity:" 
+android:textColor="@color/black" /> 
+ 
+<TextView android:id="@+id/humidity1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="5dp" 
+android:textColor="@color/black" /> 
+ 
+</TableRow> 
+ 
+</TableLayout> 
+</LinearLayout> 
+Sample.json 
+{ 
+"City Name": "Mysore", 
+"Latitude" : "12.295", 
+"Longitude" : "76.639", 
+"Temperature" : "22", 
+"Humidity" : "90%" 
+} 	Sample.xml 
+<data> 
+<City_Name>Mysore</City_Name> 
+<Latitude>22.295</Latitude> 
+<Longitude>76.639</Longitude> 
+<Temperature>42</Temperature> 
+<Humidity>80%</Humidity> </data> 
+ 
+ MainActivity.java 
+ 
+package com.example.jsonxml; 
+ 
+import androidx.appcompat.app.AppCompatActivity; import android.os.Bundle; import  android.view.View; import android.widget.Button; import android.widget.TextView; import org.json.JSONException; import org.json.JSONObject; import org.w3c.dom.Document; import org.w3c.dom.Element; import  org.w3c.dom.Node; import org.w3c.dom.NodeList; import java.io.IOException; import java.io.InputStream; import javax.xml.parsers.DocumentBuilder; import javax.xml.parsers.DocumentBuilderFactory; 
+ 
+public class MainActivity extends AppCompatActivity { private Button jsonBtnId, xmlBtnId; private TextView cityNameId,latitudeValueId,longitudeValueId; private TextView temperatureValueId,humidityValueId; private TextView cityNameId1,latitudeValueId1,longitudeValueId1; private TextView temperatureValueId1,humidityValueId1; 
+@Override 
+protected void onCreate(Bundle savedInstanceState) { super.onCreate(savedInstanceState); setContentView(R.layout.activity_main); jsonBtnId  =  findViewById(R.id.jsonBtn); xmlBtnId = findViewById(R.id.xmlBtn); cityNameId = findViewById(R.id.cityName); latitudeValueId = findViewById(R.id.latitude); longitudeValueId = findViewById(R.id.longitude); temperatureValueId = findViewById(R.id.temperature); humidityValueId = findViewById(R.id.humidity); cityNameId1 = findViewById(R.id.cityName1); latitudeValueId1 = findViewById(R.id.latitude1); longitudeValueId1 = findViewById(R.id.longitude1); temperatureValueId1 = findViewById(R.id.temperature1); humidityValueId1 = findViewById(R.id.humidity1); jsonBtnId.setOnClickListener(new View.OnClickListener() 
+{ 
+@Override 
+public void onClick(View v) 
+{ 
+try 
+{ 
+JSONObject obj = new JSONObject(loadJSONFromAsset()); 
+String cityNome = obj.get("City Name").toString(); 
+String latitude = obj.get("Latitude").toString(); 
+String longitude = obj.get("Longitude").toString(); 
+String temperature = obj.get("Temperature").toString(); String humidity = obj.get("Humidity").toString(); 
+cityNameId.setText(cityNome); latitudeValueId.setText(latitude); longitudeValueId.setText(longitude); temperatureValueId.setText(temperature); 
+humidityValueId.setText(humidity); 
+} 
+catch (JSONException e) 
+{ 
+ 	e.printStackTrace(); 
+ 	} 
+} 
+}); 
+xmlBtnId.setOnClickListener(new  View.OnClickListener() 
+{ 
+@Override 
+public void onClick(View v) 
+{ 
+try 
+{ 
+InputStream is = getAssets().open("Sample.xml"); 
+ 
+DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance(); 
+DocumentBuilder dBuilder = dbFactory.newDocumentBuilder(); Document doc = dBuilder.parse(is); 
+ 
+Element element = doc.getDocumentElement(); element.normalize(); 
+NodeList nList = doc.getElementsByTagName("data"); 
+for (int i = 0; i < nList.getLength(); i++) 
+{ 
+ 
+Node node = nList.item(i); 
+if (node.getNodeType() == Node.ELEMENT_NODE) 
+{ 
+Element element2 = (Element) node; 
+cityNameId1.setText(getValue("City_Name", element2)); latitudeValueId1.setText( getValue("Latitude", element2)); longitudeValueId1.setText( getValue("Longitude", element2)); temperatureValueId1.setText( getValue("Temperature", element2)); humidityValueId1.setText( getValue("Humidity", element2)); 
+} 
+} 
+ 
+} 
+catch (Exception e) 
+{ 
+ 	e.printStackTrace(); 
+ 	} 
+} 
+}); 
+} 
+ 
+private static String getValue(String tag, Element element) 
+ 
+{ 
+NodeList nodeList = element.getElementsByTagName(tag).item(0).getChildNodes(); 
+Node node = nodeList.item(0); return node.getNodeValue(); 
+} 
+public String loadJSONFromAsset() 
+{ 
+String json = null; 
+try 
+{ 
+InputStream is = getAssets().open("Sample.json"); int size = is.available(); byte[] buffer = new byte[size]; is.read(buffer); 
+is.close(); 
+json = new String(buffer, "UTF-8"); 
+} 
+catch (IOException ex) 
+{ 
+ex.printStackTrace(); return null; 
+} 
+return json; 
+} 
+} 
+
+ 
+PROGRAM 7: 
+Activity.xml 
+<?xml version="1.0" encoding="utf-8"?> 
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent" android:layout_height="match_parent" android:background="#D8E181" tools:context=".MainActivity"> 
+ 
+<TextView android:id="@+id/textview" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" android:text="Text to Speech" android:textColor="@color/black" android:textSize="35dp" android:textStyle="bold" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" app:layout_constraintVertical_bias="0.096" /> 
+ 
+<EditText android:id="@+id/editText" android:layout_width="212dp" android:layout_height="54dp" android:layout_alignParentStart="true" android:layout_alignParentLeft="true" android:layout_alignParentEnd="true" android:layout_alignParentRight="true" android:layout_marginTop="68dp" android:hint="Enter Text Here" android:textColor="@color/black" android:textColorHint="@color/black" android:textStyle="bold" 
+app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.497" app:layout_constraintStart_toStartOf="parent" 
+app:layout_constraintTop_toBottomOf="@+id/textview" /> 
+ 
+<Button android:id="@+id/button" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@+id/editText" android:layout_centerHorizontal="true" android:layout_marginTop="56dp" android:text="Text to Speech" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" 
+app:layout_constraintTop_toBottomOf="@+id/editText" /> 
+</androidx.constraintlayout.widget.ConstraintLayout> 
+ 
+MainActivity.java 
+package com.example.texttospeech; 
+ 
+import androidx.appcompat.app.AppCompatActivity; import android.os.Bundle; import android.os.Bundle; import android.speech.tts.TextToSpeech; import android.view.View; import android.widget.Button; import android.widget.EditText; import java.util.Locale; import android.widget.Toast; public class MainActivity extends AppCompatActivity { 
+TextToSpeech t1; 
+EditText ed1; 
+Button b1; 
+ 
+@Override 
+protected void onCreate(Bundle savedInstanceState) { super.onCreate(savedInstanceState); setContentView(R.layout.activity_main); ed1=(EditText)findViewById(R.id.editText); b1=(Button)findViewById(R.id.button); 
+ 
+t1=new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() { 
+@Override 
+public   void   onInit(int   status)   { if(status != TextToSpeech.ERROR) { t1.setLanguage(Locale.UK); 
+} 
+} 
+}); 
+ 
+b1.setOnClickListener(new View.OnClickListener() { 
+@Override 
+public void onClick(View v) { 
+String  toSpeak  =  ed1.getText().toString(); 
+Toast.makeText(getApplicationContext(), toSpeak,Toast.LENGTH_SHORT).show(); t1.speak(toSpeak, TextToSpeech.QUEUE_FLUSH, null); 
+} 
+}); 
+} 
+ 
+public void onPause(){ if(t1 !=null){ t1.stop(); 
+t1.shutdown(); 
+} 
+super.onPause(); 
+} } 
+ 
+Activity.xml 
+<?xml version="1.0" encoding="utf-8"?> 
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent" android:layout_height="match_parent" 
+android:orientation="vertical" tools:context=".MainActivity"> 
+ 
+<EditText android:id="@+id/et" android:layout_width="match_parent" android:layout_height="wrap_content" android:ems="10" 
+android:inputType="textPersonName" 
+android:text="0" android:layout_weight="1" android:textSize="75dp" android:gravity="right|center" android:background="@color/gray"/> 
+ 
+<TableLayout android:layout_width="match_parent" android:layout_height="wrap_content"> 
+<TableRow android:layout_width="match_parent" android:layout_height="match_parent"> 
+ 
+<Button android:layout_weight="1" android:layout_width="50pt" android:layout_height="50pt" android:layout_marginRight="1pt" 
+android:text="call" android:textSize="30dp" android:background="#C7D0FB" android:id="@+id/bc"></Button> 
+<Button android:id="@+id/bs" android:layout_width="50pt" android:layout_height="50pt" android:layout_marginRight="1pt" android:layout_weight="1" android:background="#C7D0FB" android:text="Save" 
+android:textSize="30dp"></Button> 
+</TableRow> 
+ 
+<TableRow android:layout_width="match_parent" android:layout_height="match_parent"> <Button android:id="@+id/b7" android:layout_width="40pt" android:layout_height="40pt" android:layout_marginRight="1pt" android:layout_weight="1" android:background="#C7D0FB" 
+android:text="7" android:textSize="30dp" android:textColor="@color/black" app:backgroundTint="#C7D0FB"></Button> 
+<Button android:layout_weight="1" android:layout_width="40pt" android:layout_height="40pt" android:layout_marginRight="1pt" android:text="8" android:textSize="30dp" android:background="#C7D0FB" android:textColor="@color/black" app:backgroundTint="#C7D0FB" android:id="@+id/b8"></Button> 
+<Button android:layout_weight="1" android:layout_width="40pt" android:layout_height="40pt" android:layout_marginRight="1pt" android:text="9" android:textSize="30dp" android:background="#C7D0FB" android:textColor="@color/black" app:backgroundTint="#C7D0FB" android:id="@+id/b9"></Button> 
+</TableRow> 
+ 
+<TableRow android:layout_width="match_parent" android:layout_height="match_parent"> 
+<Button android:layout_weight="1" android:layout_width="40pt" android:layout_height="40pt" android:layout_marginRight="1pt" android:text="4" android:textSize="30dp" android:background="#C7D0FB" android:textColor="@color/black" app:backgroundTint="#C7D0FB" android:id="@+id/b4"></Button> 
+<Button android:layout_weight="1" android:layout_width="40pt" android:layout_height="40pt" android:layout_marginRight="1pt" android:text="5" android:textSize="30dp" android:background="#C7D0FB" android:textColor="@color/black" app:backgroundTint="#C7D0FB" android:id="@+id/b5"></Button> <Button android:layout_weight="1" android:layout_width="40pt" android:layout_height="40pt" android:layout_marginRight="1pt" android:text="6" android:textSize="30dp" android:background="#C7D0FB" android:textColor="@color/black" app:backgroundTint="#C7D0FB" android:id="@+id/b6"></Button> 
+ 
+</TableRow> 
+<TableRow android:layout_width="match_parent" android:layout_height="match_parent"> 
+<Button android:layout_weight="1" android:layout_width="40pt" android:layout_height="40pt" android:layout_marginRight="1pt" android:text="1" android:textSize="30dp" android:background="#C7D0FB" android:textColor="@color/black" app:backgroundTint="#C7D0FB" android:id="@+id/b1"></Button> 
+<Button android:layout_weight="1" android:layout_width="40pt" android:layout_height="40pt" android:layout_marginRight="1pt" android:text="2" android:textSize="30dp" android:background="#C7D0FB" android:textColor="@color/black" app:backgroundTint="#C7D0FB" android:id="@+id/b2"></Button> 
+<Button android:layout_weight="1" android:layout_width="40pt" android:layout_height="40pt" 
+android:layout_marginRight="1pt" android:text="3" 	app:backgroundTint="#C7D0FB" android:id="@+id/b3"></Button> 
+ 
+ 
+</TableRow> 
+<TableRow android:layout_width="match_parent" android:layout_height="match_parent"/> 
+android:textSize="30dp" android:background="#C7D0FB" android:textColor="@color/black" 
+ 
+<TableRow android:layout_width="match_parent" 
+android:layout_height="match_parent"> 
+ 
+<Button android:id="@+id/b0" android:layout_width="40pt" android:layout_height="40pt" android:layout_marginRight="1pt" android:layout_weight="1" android:background="#C7D0FB" android:text="0" android:textColor="@color/black" android:textSize="30dp" 
+app:backgroundTint="#C7D0FB"></Button> 
+ 
+<Button android:id="@+id/bdel" android:layout_width="40pt" android:layout_height="40pt" android:layout_marginRight="1pt" android:layout_weight="1" android:background="#C7D0FB" android:text="Del" android:textColor="@color/black" android:textSize="30dp" 
+app:backgroundTint="#C7D0FB"></Button> 
+</TableRow> 
+ 
+</TableLayout> 
+</LinearLayout> 
+ 
+ 
+MainActivity.java 
+package com.example.phonedailer; 
+ 
+import androidx.appcompat.app.AppCompatActivity; import androidx.core.app.ActivityCompat; 
+import  androidx.core.content.ContextCompat; 
+ 
+import android.Manifest; import android.content.Intent; import android.content.pm.PackageManager; 
+import android.net.Uri; import android.os.Build; import android.os.Bundle; import android.provider.ContactsContract; import android.view.View; import android.widget.Button; import android.widget.EditText; public class MainActivity extends AppCompatActivity { 
+@Override 
+protected void onCreate(Bundle savedInstanceState) { super.onCreate(savedInstanceState); setContentView(R.layout.activity_main); 
+Button bt0, bt1, bt2,bt3,bt4,bt5,bt6,bt7,bt8,bt9,btsave,btcall,btdel; 
+EditText edittext; float mv,mvt; boolean add,sub,mul,div,rem; bt0 = (Button) findViewById(R.id.b0); bt1 = (Button) findViewById(R.id.b1); bt2 = (Button) findViewById(R.id.b2); bt3 = (Button) findViewById(R.id.b3); bt4 =  (Button)  findViewById(R.id.b4); bt5 =  (Button)  findViewById(R.id.b5); bt6 =  (Button)  findViewById(R.id.b6); bt7 =  (Button)  findViewById(R.id.b7); bt8 =  (Button)  findViewById(R.id.b8); bt9 = (Button) findViewById(R.id.b9); btsave = (Button) findViewById(R.id.bs); btcall = (Button) findViewById(R.id.bc); btdel = (Button) findViewById(R.id.bdel); edittext = (EditText) findViewById(R.id.et); bt0.setOnClickListener(new View.OnClickListener() { 
+@Override 
+public void onClick(View v) { edittext.setText(edittext.getText() + "0"); 
+} 
+}); 
+ 
+bt1.setOnClickListener(new View.OnClickListener() { 
+@Override public void onClick(View v) { edittext.setText(edittext.getText() + "1"); 
+} 
+}); 
+bt2.setOnClickListener(new View.OnClickListener() { 
+@Override public void onClick(View v) { edittext.setText(edittext.getText() + "2"); 
+} 
+}); 
+bt3.setOnClickListener(new View.OnClickListener() { 
+@Override public void onClick(View v) { edittext.setText(edittext.getText() + "3"); 
+} 
+}); 
+bt4.setOnClickListener(new View.OnClickListener() { 
+@Override public void onClick(View v) { edittext.setText(edittext.getText() + "4"); 
+} 
+}); 
+bt5.setOnClickListener(new View.OnClickListener() { 
+@Override public void onClick(View v) { edittext.setText(edittext.getText() + "5"); 
+} 
+}); 
+bt6.setOnClickListener(new View.OnClickListener() { 
+@Override public void onClick(View v) { edittext.setText(edittext.getText() + "6"); 
+} 
+}); 
+bt7.setOnClickListener(new View.OnClickListener() { 
+@Override public void onClick(View v) { edittext.setText(edittext.getText() + "7"); 
+} 
+}); 
+bt8.setOnClickListener(new View.OnClickListener() { 
+@Override 
+public void onClick(View v) { edittext.setText(edittext.getText() + "8"); 
+} 
+}); 
+bt9.setOnClickListener(new View.OnClickListener() { 
+@Override 
+public void onClick(View v) { edittext.setText(edittext.getText() + "9"); 
+} 
+}); 
+btdel.setOnClickListener(new View.OnClickListener() { 
+@Override 
+public void onClick(View v) { 
+String    textInBox    =    edittext.getText().toString(); 
+if (textInBox.length() > 0) { 
+String newText = textInBox.substring(0, textInBox.length() - 1); edittext.setText(newText); 
+} 
+} 
+}); 
+btsave.setOnClickListener(new View.OnClickListener() { 
+@Override 
+public void onClick(View v) { 
+Intent intent = new Intent(ContactsContract.Intents.Insert.ACTION); intent.setType(ContactsContract.RawContacts.CONTENT_TYPE); intent.putExtra(ContactsContract.Intents.Insert.PHONE, edittext.getText()); startActivity(intent); 
+} 
+}); 
+btcall.setOnClickListener(new View.OnClickListener() { 
+@Override 
+public void onClick(View v) { final int REQUEST_PHONE_CALL = 1; 
+if    (android.os.Build.VERSION.SDK_INT    >=     Build.VERSION_CODES.M)     { if (ContextCompat.checkSelfPermission(MainActivity.this, 
+Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) { ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.CALL_PHONE}, REQUEST_PHONE_CALL); 
+} 
+else { 
+String number = edittext.getText().toString(); Intent callIntent = new Intent(Intent.ACTION_CALL); callIntent.setData(Uri.parse("tel:" + number)); startActivity(callIntent); 
+} 
+} 
+} 
+}); 
+} 
+} 
+AndroidManifest.xml 
+<?xml version="1.0" encoding="utf-8"?> 
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.example.phonedailer"> 
+<uses-permission android:name="android.permission.CALL_PHONE"/> 
+ 
+<uses-permission android:name="android.intent.action.CALL_PRIVILEGED"/> 
+ 
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/> 
+<application  android:allowBackup="true" android:icon="@mipmap/ic_launcher" android:label="@string/app_name" 
+android:roundIcon="@mipmap/ic_launcher_round" android:supportsRtl="true" android:theme="@style/Theme.Phonedailer"> 
+<activity android:name=".MainActivity"> 
+<intent-filter> 
+<action  android:name="android.intent.action.MAIN"  /> 
+ 
+<category  android:name="android.intent.category.LAUNCHER"  /> 
+</intent-filter> 
+</activity> 
+</application> 
+</manifest> 
+ 
